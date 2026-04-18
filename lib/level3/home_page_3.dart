@@ -37,7 +37,10 @@ class HomePage3 extends StatelessWidget {
                 width: double.infinity,
                 height: 160,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade400,
+                  image: DecorationImage(
+                    image: AssetImage('assets/hero.png'),
+                    fit: .cover,
+                  ),
                   borderRadius: .circular(10),
                 ),
               ),
@@ -69,11 +72,11 @@ class HomePage3 extends StatelessWidget {
                 children: [
                   ProductCard(
                     title: 'Berries',
-                    description: 'Lorem ipsum dolor sit a met, consectetur',
+                    description: 'Berries is a sweet fruit with red color.',
                   ),
                   ProductCard(
                     title: 'Tulsi',
-                    description: 'Lorem ipsum dolor sit a met, consectetur',
+                    description: 'Leaf of berries is very green and fresh.',
                   ),
                 ],
               ),
@@ -82,11 +85,11 @@ class HomePage3 extends StatelessWidget {
                 children: [
                   ProductCard(
                     title: 'Milk',
-                    description: 'Lorem ipsum dolor sit a met, consectetur',
+                    description: 'Milk is a white liquid produced by mammals.',
                   ),
                   ProductCard(
                     title: 'Grains',
-                    description: 'Lorem ipsum dolor sit a met, consectetur',
+                    description: 'Grains are small, hard, dry seeds that are .',
                   ),
                 ],
               ),
