@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:workshop_1/level2/category_card.dart';
+import 'package:workshop_1/level2/product_card.dart';
 
 class HomePage2 extends StatelessWidget {
   const HomePage2({super.key});
@@ -39,86 +41,25 @@ class HomePage2 extends StatelessWidget {
                     borderRadius: .circular(10),
                   ),
                 ),
-            
+
                 Text(
                   'Categories',
                   style: TextStyle(fontWeight: .w700, fontSize: 16),
                 ),
-            
+
                 SingleChildScrollView(
                   scrollDirection: .horizontal,
                   child: Row(
+                    spacing: 5,
                     children: [
-                      Container(
-                        padding: .all(4),
-                        width: 121,
-                        height: 56,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: .circular(50),
-                        ),
-                        child: Row(
-                          children: [
-                            CircleAvatar(backgroundColor: Colors.grey),
-                            SizedBox(width: 8),
-                            Text("Fruits"),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: .all(4),
-                        width: 121,
-                        height: 56,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: .circular(50),
-                        ),
-                        child: Row(
-                          children: [
-                            CircleAvatar(backgroundColor: Colors.grey),
-                            SizedBox(width: 8),
-                            Text("Fruits"),
-                          ],
-                        ),
-                      ),
-                  
-                      Container(
-                        padding: .all(4),
-                        width: 121,
-                        height: 56,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: .circular(50),
-                        ),
-                        child: Row(
-                          children: [
-                            CircleAvatar(backgroundColor: Colors.grey),
-                            SizedBox(width: 8),
-                            Text("Fruits"),
-                          ],
-                        ),
-                      ),
-                  
-                      Container(
-                        padding: .all(4),
-                        width: 121,
-                        height: 56,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: .circular(50),
-                        ),
-                        child: Row(
-                          children: [
-                            CircleAvatar(backgroundColor: Colors.grey),
-                            SizedBox(width: 8),
-                            Text("Fruits"),
-                          ],
-                        ),
-                      ),
+                      CategoryCard(title: 'Fruits'),
+                      CategoryCard(title: 'Grains'),
+                      CategoryCard(title: 'Herbs'),
+                      CategoryCard(title: 'Milk'),
                     ],
                   ),
                 ),
-            
+
                 Text(
                   'Browse Products',
                   style: TextStyle(fontWeight: .w700, fontSize: 16),
@@ -126,43 +67,26 @@ class HomePage2 extends StatelessWidget {
                 Row(
                   spacing: 20,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: .start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 160,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: .circular(10),
-                            ),
-                          ),
-                          SizedBox(height: 12),
-                          Text('Berries'),
-                          SizedBox(height: 6),
-                          Text('Lorem ipsum dolor sit a met, consectetur'),
-                        ],
-                      ),
+                    ProductCard(
+                      title: 'Berries',
+                      description: 'Lorem ipsum dolor sit a met, consectetur',
                     ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: .start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 160,
-                            decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: .circular(10),
-                            ),
-                          ),
-                          SizedBox(height: 12),
-                          Text('Tulsi'),
-                          SizedBox(height: 6),
-                          Text('Lorem ipsum dolor sit a met, consectetur'),
-                        ],
-                      ),
+                    ProductCard(
+                      title: 'Tulsi',
+                      description: 'Lorem ipsum dolor sit a met, consectetur',
+                    ),
+                  ],
+                ),
+                Row(
+                  spacing: 20,
+                  children: [
+                    ProductCard(
+                      title: 'Milk',
+                      description: 'Lorem ipsum dolor sit a met, consectetur',
+                    ),
+                    ProductCard(
+                      title: 'Grains',
+                      description: 'Lorem ipsum dolor sit a met, consectetur',
                     ),
                   ],
                 ),

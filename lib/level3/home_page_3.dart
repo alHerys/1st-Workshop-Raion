@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:workshop_1/level3/detail_screen.dart';
+import 'package:workshop_1/level3/category_card.dart';
+import 'package:workshop_1/level3/product_card.dart';
 
 class HomePage3 extends StatelessWidget {
   const HomePage3({super.key});
@@ -22,6 +23,7 @@ class HomePage3 extends StatelessWidget {
             children: [
               TextField(
                 decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.search),
                   filled: true,
                   hintText: 'Search..',
                   fillColor: Colors.grey.shade400,
@@ -48,73 +50,12 @@ class HomePage3 extends StatelessWidget {
               SingleChildScrollView(
                 scrollDirection: .horizontal,
                 child: Row(
+                  spacing: 5,
                   children: [
-                    Container(
-                      padding: .all(4),
-                      width: 121,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: .circular(50),
-                      ),
-                      child: Row(
-                        children: [
-                          CircleAvatar(backgroundColor: Colors.grey),
-                          SizedBox(width: 8),
-                          Text("Fruits"),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: .all(4),
-                      width: 121,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: .circular(50),
-                      ),
-                      child: Row(
-                        children: [
-                          CircleAvatar(backgroundColor: Colors.grey),
-                          SizedBox(width: 8),
-                          Text("Fruits"),
-                        ],
-                      ),
-                    ),
-
-                    Container(
-                      padding: .all(4),
-                      width: 121,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: .circular(50),
-                      ),
-                      child: Row(
-                        children: [
-                          CircleAvatar(backgroundColor: Colors.grey),
-                          SizedBox(width: 8),
-                          Text("Fruits"),
-                        ],
-                      ),
-                    ),
-
-                    Container(
-                      padding: .all(4),
-                      width: 121,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade400,
-                        borderRadius: .circular(50),
-                      ),
-                      child: Row(
-                        children: [
-                          CircleAvatar(backgroundColor: Colors.grey),
-                          SizedBox(width: 8),
-                          Text("Fruits"),
-                        ],
-                      ),
-                    ),
+                    CategoryCard(title: 'Fruits'),
+                    CategoryCard(title: 'Grains'),
+                    CategoryCard(title: 'Herbs'),
+                    CategoryCard(title: 'Milk'),
                   ],
                 ),
               ),
@@ -126,51 +67,26 @@ class HomePage3 extends StatelessWidget {
               Row(
                 spacing: 20,
                 children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => DetailScreen()),
-                        );
-                      },
-                      child: Column(
-                        crossAxisAlignment: .start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 160,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade400,
-                              borderRadius: .circular(10),
-                            ),
-                          ),
-                          SizedBox(height: 12),
-                          Text('Berries'),
-                          SizedBox(height: 6),
-                          Text('Lorem ipsum dolor sit a met, consectetur'),
-                        ],
-                      ),
-                    ),
+                  ProductCard(
+                    title: 'Berries',
+                    description: 'Lorem ipsum dolor sit a met, consectetur',
                   ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: .start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: 160,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade400,
-                            borderRadius: .circular(10),
-                          ),
-                        ),
-                        SizedBox(height: 12),
-                        Text('Tulsi'),
-                        SizedBox(height: 6),
-                        Text('Lorem ipsum dolor sit a met, consectetur'),
-                      ],
-                    ),
+                  ProductCard(
+                    title: 'Tulsi',
+                    description: 'Lorem ipsum dolor sit a met, consectetur',
+                  ),
+                ],
+              ),
+              Row(
+                spacing: 20,
+                children: [
+                  ProductCard(
+                    title: 'Milk',
+                    description: 'Lorem ipsum dolor sit a met, consectetur',
+                  ),
+                  ProductCard(
+                    title: 'Grains',
+                    description: 'Lorem ipsum dolor sit a met, consectetur',
                   ),
                 ],
               ),
