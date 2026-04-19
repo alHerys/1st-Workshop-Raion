@@ -11,9 +11,9 @@ Perbedaan setiap level dapat dilihat pada struktur implementasi di folder **`lib
 
 ## 🧩 Level Implementasi
 
-- Level 1
-- Level 2
-- Level 3
+- **Level 1**: Implementasi dasar struktur dan komponen UI.
+- **Level 2**: Penyempurnaan layout, styling, dan hierarki tampilan.
+- **Level 3**: Implementasi final yang lebih lengkap sesuai desain target workshop.
 
 ## 🖼️ Lampiran Desain
 
