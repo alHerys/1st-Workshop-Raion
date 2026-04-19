@@ -17,7 +17,7 @@ Perbedaan setiap level dapat dilihat pada struktur implementasi di folder **`lib
 
 ## 🖼️ Lampiran Desain
 
-![Design 1](https://github.com/user-attachments/assets/2f44bbff-2ae9-4b60-8a33-8a6c8dc2332f)
-![Design 2](https://github.com/user-attachments/assets/26b0c8eb-3eb5-43d0-9e08-c9c7455ddca6)
-![Design 3](https://github.com/user-attachments/assets/fd8c9ae6-e0a8-42b8-91df-071097dab217)
-![Design 4](https://github.com/user-attachments/assets/43a128d3-d57f-4dc2-96b4-ce06145ecb3d)
+<img src="https://github.com/user-attachments/assets/2f44bbff-2ae9-4b60-8a33-8a6c8dc2332f" alt="Design 1" height="600">
+<img src="https://github.com/user-attachments/assets/26b0c8eb-3eb5-43d0-9e08-c9c7455ddca6" alt="Design 2" height="600">
+<img src="https://github.com/user-attachments/assets/fd8c9ae6-e0a8-42b8-91df-071097dab217" alt="Design 3" height="600">
+<img src="https://github.com/user-attachments/assets/43a128d3-d57f-4dc2-96b4-ce06145ecb3d" alt="Design 4" height="600">
