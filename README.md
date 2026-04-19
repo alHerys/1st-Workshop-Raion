@@ -1,17 +1,23 @@
-# workshop_1
+# 🌱 Workshop 1 Mobile Engineer Raion 2026
 
-A new Flutter project.
+Project ini adalah aplikasi yang menjadi bahan materi pembelajaran **Workshop pertama Mobile Engineer Raion 2026**.
 
-## Getting Started
+## 📌 Topik Workshop
 
-This project is a starting point for a Flutter application.
+**Introduction to Flutter Development**
 
-A few resources to get you started if this is your first Flutter project:
+Workshop dilakukan dengan mempraktikkan **3 level implementasi design**.
+Perbedaan setiap level dapat dilihat pada struktur implementasi di folder **`lib`**.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 🧩 Level Implementasi
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Level 1
+- Level 2
+- Level 3
+
+## 🖼️ Lampiran Desain
+
+![Design 1](https://github.com/user-attachments/assets/2f44bbff-2ae9-4b60-8a33-8a6c8dc2332f)
+![Design 2](https://github.com/user-attachments/assets/26b0c8eb-3eb5-43d0-9e08-c9c7455ddca6)
+![Design 3](https://github.com/user-attachments/assets/fd8c9ae6-e0a8-42b8-91df-071097dab217)
+![Design 4](https://github.com/user-attachments/assets/43a128d3-d57f-4dc2-96b4-ce06145ecb3d)
