@@ -13,37 +13,49 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailScreen()),
-          );
-        },
-        child: Column(
-          crossAxisAlignment: .start,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 160,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade400,
-                borderRadius: .circular(10),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DetailScreen()),
+        );
+      },
+      child: Column(
+        crossAxisAlignment: .start,
+        children: [
+          Container(
+            width: double.infinity,
+            height: 160,
+            decoration: BoxDecoration(
+              color: Color(0xFFD9D9D9),
+              borderRadius: .circular(10),
+            ),
+          ),
+          SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: .spaceBetween,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  color: const Color(0xFF505050),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
+              Icon(Icons.favorite_border),
+            ],
+          ),
+          SizedBox(height: 6),
+          Text(
+            description,
+            style: TextStyle(
+              color: const Color(0xFF939393),
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
             ),
-            SizedBox(height: 12),
-            Row(
-              mainAxisAlignment: .spaceBetween,
-              children: [
-                Text(title),
-                Icon(Icons.favorite_border, color: Colors.grey.shade700),
-              ],
-            ),
-            SizedBox(height: 6),
-            Text(description),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

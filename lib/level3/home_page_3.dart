@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:workshop_1/level3/category_card.dart';
 import 'package:workshop_1/level3/product_card.dart';
 
@@ -15,7 +16,7 @@ class HomePage3 extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        padding: const .only(left: 20, right: 20, bottom: 20),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: .start,
@@ -23,22 +24,37 @@ class HomePage3 extends StatelessWidget {
             children: [
               TextField(
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 15,
+                      top: 10,
+                      bottom: 10,
+                      right: 10,
+                    ),
+                    child: Image.asset('assets/icons/search.png', width: 18),
+                  ),
                   filled: true,
                   hintText: 'Search..',
-                  fillColor: Colors.grey.shade400,
+                  hintStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: .bold,
+                    color: Color(0xFF505050),
+                  ),
+                  fillColor: Color(0xFFD9D9D9),
                   border: OutlineInputBorder(
                     borderSide: .none,
-                    borderRadius: .circular(8),
+                    borderRadius: .circular(10),
                   ),
+                  contentPadding: .zero,
                 ),
               ),
+
               Container(
                 width: double.infinity,
                 height: 160,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/hero.png'),
+                    image: AssetImage('assets/images/hero.png'),
                     fit: .cover,
                   ),
                   borderRadius: .circular(10),
@@ -47,7 +63,11 @@ class HomePage3 extends StatelessWidget {
 
               Text(
                 'Categories',
-                style: TextStyle(fontWeight: .w700, fontSize: 16),
+                style: TextStyle(
+                  fontWeight: .w700,
+                  fontSize: 16,
+                  fontFamily: GoogleFonts.poppins().fontFamily,
+                ),
               ),
 
               SingleChildScrollView(
@@ -67,8 +87,15 @@ class HomePage3 extends StatelessWidget {
                 'Browse Products',
                 style: TextStyle(fontWeight: .w700, fontSize: 16),
               ),
-              Row(
-                spacing: 20,
+              GridView(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  mainAxisExtent: 260,
+                ),
                 children: [
                   ProductCard(
                     title: 'Berries',
@@ -78,11 +105,6 @@ class HomePage3 extends StatelessWidget {
                     title: 'Tulsi',
                     description: 'Leaf of berries is very green and fresh.',
                   ),
-                ],
-              ),
-              Row(
-                spacing: 20,
-                children: [
                   ProductCard(
                     title: 'Milk',
                     description: 'Milk is a white liquid produced by mammals.',
