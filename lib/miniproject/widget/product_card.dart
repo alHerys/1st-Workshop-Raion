@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:workshop_1/miniproject/detail_screen.dart';
+import 'package:workshop_1/miniproject/detail_page.dart';
 
 class ProductCard extends StatefulWidget {
   final String title;
@@ -23,15 +23,18 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  late bool isFavorite;
+  late bool isFavorite; // ini state buat nyimpen status favorite
 
   @override
   void initState() {
     super.initState();
-    isFavorite = widget.isFavorite;
+    isFavorite =
+        widget.isFavorite; // inisialisasi state dengan nilai dari constructor
   }
 
   void toggleFavorite() {
+    // fungsi buat toggle status favorite
+    // bakalan rebuild widget setiap kali isFavorite berubah
     setState(() {
       isFavorite = !isFavorite;
     });
@@ -44,13 +47,16 @@ class _ProductCardState extends State<ProductCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => DetailScreen(
+            builder: (context) => DetailPage(
               title: widget.title,
               description: widget.description,
               image: widget.image,
               rating: widget.rating,
               isFavorite: isFavorite,
-              onClickFavorite: () => toggleFavorite()
+
+              // passing fungsi toggleFavorite ke DetailPage
+              // mirip lambda onClick kalo di kotlin
+              onClickFavorite: () => toggleFavorite(),
             ),
           ),
         );
@@ -77,7 +83,12 @@ class _ProductCardState extends State<ProductCard> {
                 right: 12,
                 top: 12,
                 child: GestureDetector(
+                  /*
+                   toggle status favorite saat icon di tap. 
+                   Sama kayak onClickFavorite: () => toggleFavorite() di atas
+                  */
                   onTap: () => toggleFavorite(),
+
                   child: ClipRRect(
                     borderRadius: .circular(30),
                     child: BackdropFilter(
@@ -88,7 +99,8 @@ class _ProductCardState extends State<ProductCard> {
                           color: Colors.white.withValues(alpha: 0.4),
                           shape: BoxShape.circle,
                         ),
-                        child: isFavorite
+                        child:
+                            isFavorite // tampilkan icon merah kalo favorit, kalo engga putih aja
                             ? Icon(Icons.favorite, color: Colors.red, size: 20)
                             : Icon(
                                 Icons.favorite_border,

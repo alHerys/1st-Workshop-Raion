@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:workshop_1/miniproject/category_card.dart';
-import 'package:workshop_1/miniproject/product_card.dart';
+import 'package:workshop_1/miniproject/widget/carousel_view_widget.dart';
+import 'package:workshop_1/miniproject/widget/category_card.dart';
+import 'package:workshop_1/miniproject/widget/page_view_widget.dart';
+import 'package:workshop_1/miniproject/widget/product_card.dart';
 
 class HomePage4 extends StatefulWidget {
   const HomePage4({super.key});
@@ -13,6 +15,7 @@ class HomePage4 extends StatefulWidget {
 class _HomePage4State extends State<HomePage4> {
   late PageController _pageController;
   late CarouselController _carouselController;
+  final double _carouselItemExtend = 300;
   int pageCount = 5;
   int _pageViewPage = 0;
   int _carouselPage = 0;
@@ -24,7 +27,8 @@ class _HomePage4State extends State<HomePage4> {
     _carouselController = CarouselController();
     _carouselController.addListener(() {
       setState(() {
-        _carouselPage = (_carouselController.offset / 300).round();
+        _carouselPage = (_carouselController.offset / _carouselItemExtend)
+            .round();
       });
     });
     _pageController.addListener(() {
@@ -67,6 +71,8 @@ class _HomePage4State extends State<HomePage4> {
                 padding: const .only(top: 15.0),
                 child: TextField(
                   decoration: InputDecoration(
+
+                    // [INI BUAT ICON SEARCH NYA]
                     prefixIcon: Padding(
                       padding: const EdgeInsets.only(
                         left: 15,
@@ -76,13 +82,19 @@ class _HomePage4State extends State<HomePage4> {
                       ),
                       child: Image.asset('assets/icons/search.png', width: 18),
                     ),
+
+                    // [INI BUAT HINT TEXT NYA]
                     hintText: 'Search..',
                     hintStyle: TextStyle(
                       fontSize: 16,
                       fontWeight: .w800,
                       color: Color(0xFF939393),
                     ),
+
+                    // [INI BUAT TIPE BORDER UMUM BUAT SEMUA KONDISI]
                     border: OutlineInputBorder(borderRadius: .circular(30)),
+
+                    // [INI BUAT TIPE BORDER  KALO LAGI GA NGAPA NGAPAIN]
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0xFF505050),
@@ -90,13 +102,19 @@ class _HomePage4State extends State<HomePage4> {
                       ),
                       borderRadius: .circular(30),
                     ),
+
                     contentPadding: .zero,
                   ),
                 ),
               ),
 
-              CarouselViewWidget(carouselController: _carouselController),
+              // [INI BUAT YANG PENGEN NYOBA TIPE CAROUSEL]
+              CarouselViewWidget(
+                carouselController: _carouselController,
+                carouselItemExtend: _carouselItemExtend,
+              ),
 
+              // INI DOT INDICATOR BUAT CAROUSEL
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 6,
@@ -106,7 +124,9 @@ class _HomePage4State extends State<HomePage4> {
                     width: 6,
                     height: 6,
                     decoration: ShapeDecoration(
-                      color: _carouselPage == index
+                      color:
+                          _carouselPage ==
+                              index // kalo index sama dengan page yang aktif, warnanya hijau, kalo engga abu abu
                           ? Color(0xFF007E2F)
                           : Color(0xFFD9D9D9),
                       shape: OvalBorder(),
@@ -115,18 +135,27 @@ class _HomePage4State extends State<HomePage4> {
                 ),
               ),
 
+              // [INI BUAT YANG PENGEN NYOBA TIPE PAGE VIEW]
               PageViewWidget(pageController: _pageController),
 
+              // INI DOT INDICATOR BUAT PAGE VIEW
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 6,
-                children: List.generate(
-                  pageCount,
+                /*
+                  List.generate itu buat generate widget sebanyak pageCount, 
+                  terus index itu buat ngecek page yang aktif.
+                  Semacam loop gitu tapi buat widget.
+                */
+                children: List.generate( 
+                  pageCount, // jumlah widget yg mau dibuat
                   (index) => Container(
                     width: 6,
                     height: 6,
                     decoration: ShapeDecoration(
-                      color: _pageViewPage == index
+                      color:
+                          _pageViewPage ==
+                              index // kalo index sama dengan page yang aktif, warnanya hijau, kalo engga abu abu
                           ? Color(0xFF007E2F)
                           : Color(0xFFD9D9D9),
                       shape: OvalBorder(),
@@ -144,6 +173,7 @@ class _HomePage4State extends State<HomePage4> {
                 ),
               ),
 
+              // [KATEGORI]
               SingleChildScrollView(
                 scrollDirection: .horizontal,
                 child: Row(
@@ -169,6 +199,9 @@ class _HomePage4State extends State<HomePage4> {
                 'Browse Products',
                 style: TextStyle(fontWeight: .w500, fontSize: 16),
               ),
+
+              // INI GRIDVIEW BUAT TAMPILIN PRODUKNYA
+              // Pake row biasa juga boleh, tapi kalo gridview bisa lebih rapi dan gampang buat nampilin banyak produk
               GridView(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -212,131 +245,6 @@ class _HomePage4State extends State<HomePage4> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class PageViewWidget extends StatelessWidget {
-  const PageViewWidget({super.key, required PageController pageController})
-    : _pageController = pageController;
-
-  final PageController _pageController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 160,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-      child: PageView(
-        controller: _pageController,
-        children: [
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/hero.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/tomato.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/berries.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/milk.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/tulsi.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CarouselViewWidget extends StatelessWidget {
-  const CarouselViewWidget({
-    super.key,
-    required CarouselController carouselController,
-  }) : _carouselController = carouselController;
-
-  final CarouselController _carouselController;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 160,
-      child: CarouselView(
-        controller: _carouselController,
-        itemExtent: 250,
-        itemSnapping: true,
-        children: [
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/hero.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/tomato.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/berries.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/milk.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          ClipRRect(
-            borderRadius: .circular(30),
-            child: Image.asset(
-              'assets/images/tulsi.png',
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-        ],
       ),
     );
   }

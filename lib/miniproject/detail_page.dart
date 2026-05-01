@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DetailScreen extends StatefulWidget {
+class DetailPage extends StatefulWidget {
   final String title;
   final String description;
   final String image;
   final String rating;
   final bool isFavorite;
-  final VoidCallback onClickFavorite;
+  final VoidCallback onClickFavorite; // ini mirip lambda onClick di kotlin, buat passing fungsi dari parent widget
 
-  const DetailScreen({
+  const DetailPage({
     super.key,
     required this.title,
     required this.description,
@@ -20,23 +20,23 @@ class DetailScreen extends StatefulWidget {
   });
 
   @override
-  State<DetailScreen> createState() => _DetailScreenState();
+  State<DetailPage> createState() => _DetailPageState();
 }
 
-class _DetailScreenState extends State<DetailScreen> {
-  late bool isFavorite;
+class _DetailPageState extends State<DetailPage> {
+  late bool isFavorite; // ini state buat nyimpen status favorite, biar bisa diubah di DetailPage tanpa harus langsung ngubah di ProductCard
 
   @override
   void initState() {
     super.initState();
-    isFavorite = widget.isFavorite;
+    isFavorite = widget.isFavorite; // inisialisasi state dengan nilai dari constructor
   }
 
   void toggleFavorite() {
     setState(() {
       isFavorite = !isFavorite;
     });
-    widget.onClickFavorite();
+    widget.onClickFavorite(); // panggil fungsi yang dipassing dari parent widget (ProductCard) buat ngubah status favorite di ProductCard
   }
 
   @override
