@@ -4,6 +4,7 @@ import 'package:workshop_1/level1/home_page_1.dart';
 import 'package:workshop_1/level2/home_page_2.dart';
 import 'package:workshop_1/level3/detail_screen.dart';
 import 'package:workshop_1/level3/home_page_3.dart';
+import 'package:workshop_1/miniproject/home_page_4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,9 +21,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.lightGreenAccent),
         scaffoldBackgroundColor: Colors.white,
-        fontFamily: GoogleFonts.quicksand().fontFamily,
+        fontFamily: GoogleFonts.poppins().fontFamily,
       ),
-      home: HomePage3(),
+      home: HomePage4(),
     );
   }
 }
