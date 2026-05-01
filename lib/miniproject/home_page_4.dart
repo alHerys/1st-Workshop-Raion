@@ -11,6 +11,36 @@ class HomePage4 extends StatefulWidget {
 }
 
 class _HomePage4State extends State<HomePage4> {
+  late PageController _pageController;
+  late CarouselController _carouselController;
+  int pageCount = 5;
+  int _pageViewPage = 0;
+  int _carouselPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+    _carouselController = CarouselController();
+    _carouselController.addListener(() {
+      setState(() {
+        _carouselPage = (_carouselController.offset / 300).round();
+      });
+    });
+    _pageController.addListener(() {
+      setState(() {
+        _pageViewPage = _pageController.page!.round();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    _carouselController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +61,7 @@ class _HomePage4State extends State<HomePage4> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: .start,
-            spacing: 24,
+            spacing: 20,
             children: [
               Padding(
                 padding: const .only(top: 15.0),
@@ -65,26 +95,43 @@ class _HomePage4State extends State<HomePage4> {
                 ),
               ),
 
-              Container(
-                width: double.infinity,
-                height: 160,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+              CarouselViewWidget(carouselController: _carouselController),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 6,
+                children: List.generate(
+                  pageCount,
+                  (index) => Container(
+                    width: 6,
+                    height: 6,
+                    decoration: ShapeDecoration(
+                      color: _carouselPage == index
+                          ? Color(0xFF007E2F)
+                          : Color(0xFFD9D9D9),
+                      shape: OvalBorder(),
+                    ),
+                  ),
                 ),
-                child: PageView(
-                  children: [
-                    Image.asset(
-                      'assets/images/hero.png',
-                      fit: BoxFit.cover,
-                      width: double.infinity,
+              ),
+
+              PageViewWidget(pageController: _pageController),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 6,
+                children: List.generate(
+                  pageCount,
+                  (index) => Container(
+                    width: 6,
+                    height: 6,
+                    decoration: ShapeDecoration(
+                      color: _pageViewPage == index
+                          ? Color(0xFF007E2F)
+                          : Color(0xFFD9D9D9),
+                      shape: OvalBorder(),
                     ),
-                    Image.asset(
-                      'assets/images/hero.png',
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
-                  ],
+                  ),
                 ),
               ),
 
@@ -165,6 +212,131 @@ class _HomePage4State extends State<HomePage4> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PageViewWidget extends StatelessWidget {
+  const PageViewWidget({super.key, required PageController pageController})
+    : _pageController = pageController;
+
+  final PageController _pageController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 160,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+      child: PageView(
+        controller: _pageController,
+        children: [
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/hero.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/tomato.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/berries.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/milk.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/tulsi.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CarouselViewWidget extends StatelessWidget {
+  const CarouselViewWidget({
+    super.key,
+    required CarouselController carouselController,
+  }) : _carouselController = carouselController;
+
+  final CarouselController _carouselController;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 160,
+      child: CarouselView(
+        controller: _carouselController,
+        itemExtent: 250,
+        itemSnapping: true,
+        children: [
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/hero.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/tomato.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/berries.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/milk.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+          ClipRRect(
+            borderRadius: .circular(30),
+            child: Image.asset(
+              'assets/images/tulsi.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+        ],
       ),
     );
   }
